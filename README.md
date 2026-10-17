@@ -38,7 +38,25 @@ graph TD
 | **Company** | Publish a targeted-college or pool drive, review applicants, open a candidate's resume, and save interview decisions. |
 | **College** | Review placement requests and approve or reject drives before they appear to eligible students. |
 
-The diagram above shows the end-to-end placement workflow. If you add interface screenshots later, capture them with clean demo accounts and sample PDF files only; never publish real candidate names, emails, phone numbers, or resumes.
+Screenshots below are from the locally running application. Account identifiers and the uploaded resume filename are obscured, and the college view excludes student outcome details.
+
+
+## Project screenshots
+
+The screenshots below show the actual PAT interface and key role-based workflows.
+
+<p align="center">
+  <img src="docs/screenshots/pat-homepage.webp" alt="Placement Automation Tool landing page" width="48%" />
+  <img src="docs/screenshots/pat-student-dashboard.webp" alt="Student dashboard showing placement activity and profile readiness" width="48%" />
+</p>
+<p align="center">
+  <img src="docs/screenshots/pat-application-tracking.webp" alt="Student application and interview round tracking" width="48%" />
+  <img src="docs/screenshots/pat-resume-library.webp" alt="Student resume library with PDF preview action" width="48%" />
+</p>
+<p align="center">
+  <img src="docs/screenshots/pat-company-drive-setup.webp" alt="Company placement drive form with target college selection" width="48%" />
+  <img src="docs/screenshots/pat-college-workspace.webp" alt="College workspace for institution details and placement approvals" width="48%" />
+</p>
 
 ## About the project
 
