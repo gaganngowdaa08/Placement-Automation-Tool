@@ -16,6 +16,30 @@ React · Spring Boot · Java 21 · MySQL · Docker Compose
 
 ---
 
+## Demo access and workflow preview
+
+**Live demo:** PAT is currently demonstrated locally; there is no public hosted URL. A recruiter can review the code here and follow the local run steps below to launch the complete application.
+
+```mermaid
+flowchart TD
+    C[Company registers] --> J[Publish a placement drive]
+    J --> A[College reviews and approves]
+    A --> S[Eligible students browse and apply]
+    S --> R[Company reviews applicants and resumes]
+    R --> I[Interview round decisions saved]
+    I --> D[Student sees updated application status]
+```
+
+### What to explore in the application
+
+| Workspace | Demo actions |
+|---|---|
+| **Student** | Complete profile and academics, upload/view a PDF resume, browse approved drives, apply, and check saved interview status. |
+| **Company** | Publish a targeted-college or pool drive, review applicants, open a candidate's resume, and save interview decisions. |
+| **College** | Review placement requests and approve or reject drives before they appear to eligible students. |
+
+For screenshots in the README, use clean demo accounts and sample PDF files only. Do not publish real candidate names, emails, phone numbers, or resumes in screenshots.
+
 ## About the project
 
 The Placement Automation Tool (PAT) brings placement-related workflows into one web application. Students manage their profiles and resumes, companies post placement drives and evaluate applicants, and colleges review placement requests and track outcomes.
@@ -114,13 +138,15 @@ notepad .env
 
 Replace the example password/secret values in `.env` with unique local values. Keep `.env` private; commit `.env.example` only. These settings are for local development and are not production secrets.
 
-### 2. Build and start the stack
+### 2. First launch (or after code changes)
 
 ```powershell
 docker compose config
 docker compose up --build -d
-docker compose ps
+docker compose ps -a
 ```
+
+The first build may take several minutes while Docker downloads base images and builds Java/React. On later days, use the faster restart commands in **Reopen PAT for a recruiter demo** below.
 
 Compose starts MySQL, runs the migration service, then starts the backend and frontend. Wait until the services show as running/healthy before opening the app.
 
@@ -144,6 +170,52 @@ docker compose down
 ```
 
 This stops/removes containers but keeps named volumes. **Do not use `docker compose down -v` if you need to preserve local MySQL data or uploaded resumes.** The initial `database/schema.sql` is intended for a fresh MySQL data directory; do not manually run it against data you need to keep because it contains schema-reset statements.
+
+## Reopen PAT for a recruiter demo (Windows)
+
+Use this checklist whenever you close VS Code, close the browser, or restart your computer.
+
+1. Start **Docker Desktop** and wait until it says Docker is running.
+2. Open VS Code and open the project folder that contains `docker-compose.yml`. In the current nested download, make sure you opened the inner `Placement-Automation-Tool-main` folder, not the outer folder.
+3. Open **Terminal → New Terminal** and choose PowerShell.
+4. Run:
+
+```powershell
+docker compose up -d
+docker compose ps -a
+```
+
+5. Wait until MySQL and the backend/frontend services are running. The one-shot `db-migrate` container showing **Exited (0)** is expected after the migration completes successfully.
+6. Open the app at [http://localhost:8081](http://localhost:8081).
+
+Check the API if needed: [http://localhost:8080/api/health](http://localhost:8080/api/health).
+
+### If something does not open
+
+Run these commands from the same folder:
+
+```powershell
+docker compose ps -a
+docker compose logs --tail=100 backend
+docker compose logs --tail=100 frontend
+docker compose logs --tail=100 mysql
+```
+
+If you edited code since your last run, rebuild with:
+
+```powershell
+docker compose up --build -d
+```
+
+If you only closed the browser or VS Code, you normally do **not** need to rebuild. Start Docker Desktop and run `docker compose up -d`.
+
+### End the demo safely
+
+```powershell
+docker compose down
+```
+
+This keeps the named database and resume-upload volumes. Never use `docker compose down -v`, `docker volume prune`, or a command that deletes volumes when you need to keep your accounts, applications, interview decisions, and uploaded resumes. Keep the existing `.env` file private; do not overwrite it on a working installation.
 
 ## First-use walkthrough
 
