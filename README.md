@@ -38,13 +38,30 @@ flowchart TD
 | **Company** | Publish a targeted-college or pool drive, review applicants, open a candidate's resume, and save interview decisions. |
 | **College** | Review placement requests and approve or reject drives before they appear to eligible students. |
 
-For screenshots in the README, use clean demo accounts and sample PDF files only. Do not publish real candidate names, emails, phone numbers, or resumes in screenshots.
+The diagram above shows the end-to-end placement workflow. If you add interface screenshots later, capture them with clean demo accounts and sample PDF files only; never publish real candidate names, emails, phone numbers, or resumes.
 
 ## About the project
 
 The Placement Automation Tool (PAT) brings placement-related workflows into one web application. Students manage their profiles and resumes, companies post placement drives and evaluate applicants, and colleges review placement requests and track outcomes.
 
 The current project is a **locally runnable portfolio/learning application**, with the main role-based workflows connected to a Spring Boot API and MySQL. The features listed below have been manually exercised in the local version. It is not represented as a production-ready placement service.
+
+## Quick start for a local demo
+
+The project currently runs locally rather than at a public demo URL. On the computer where PAT is configured:
+
+1. Start Docker Desktop.
+2. Open a PowerShell terminal in the folder containing `docker-compose.yml`.
+3. Run:
+
+```powershell
+docker compose up -d
+docker compose ps -a
+```
+
+4. Open [http://localhost:8081](http://localhost:8081). The backend health endpoint is [http://localhost:8080/api/health](http://localhost:8080/api/health).
+
+See [Reopen PAT for a recruiter demo](#reopen-pat-for-a-recruiter-demo-windows) below for the restart checklist, troubleshooting commands, and safe shutdown instructions.
 
 ## Main features
 
