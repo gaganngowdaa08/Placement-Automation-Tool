@@ -239,10 +239,6 @@ The request/response DTOs and authorization rules in the source code are the def
 - A public GitHub repository is source-code hosting; it does **not** deploy this Docker Compose stack to a public URL. Hosting it publicly requires configuring a server or deployment platform, managed database, persistent file storage, HTTPS, backups, CORS, and production-grade secret management.
 - This project has not been hardened for production use. A production version should add verified institution identities, administrative account verification, stronger abuse/rate controls, observability, and a tested backup/restore process.
 
-## Attribution and license
-
-This adapted working copy builds on the [Fahim-004/Placement-Automation-Tool](https://github.com/Fahim-004/Placement-Automation-Tool) project and includes subsequent local changes to role workflows, persistence, drive targeting, resume viewing, and interview tracking. Please retain appropriate attribution and obtain the original author's permission before redistributing the adapted project publicly. The source repository did not include a license file, so this repository intentionally does not claim an open-source license for the underlying source.
-
 ---
 
 *Built as a full-stack engineering project to explore role-based access, REST APIs, relational persistence, file handling, and Docker-based local development.*
