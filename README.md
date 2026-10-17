@@ -21,13 +21,13 @@ React · Spring Boot · Java 21 · MySQL · Docker Compose
 **Live demo:** PAT is currently demonstrated locally; there is no public hosted URL. A recruiter can review the code here and follow the local run steps below to launch the complete application.
 
 ```mermaid
-flowchart TD
-    C[Company registers] --> J[Publish a placement drive]
-    J --> A[College reviews and approves]
-    A --> S[Eligible students browse and apply]
-    S --> R[Company reviews applicants and resumes]
-    R --> I[Interview round decisions saved]
-    I --> D[Student sees updated application status]
+graph TD
+    Company["Company registers"] --> Drive["Company publishes a placement drive"]
+    Drive --> College["College reviews and approves the drive"]
+    College --> Students["Eligible students browse and apply"]
+    Students --> Review["Company reviews applicants and resumes"]
+    Review --> Interview["Interview decisions are saved"]
+    Interview --> Status["Student sees the updated application status"]
 ```
 
 ### What to explore in the application
