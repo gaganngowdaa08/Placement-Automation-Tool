@@ -1,0 +1,58 @@
+.page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f6f8;
+}
+
+.login-box {
+  width: 350px;
+  padding: 35px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.logo {
+  color: #2c7be5;
+  margin-bottom: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background: #2c7be5;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #1a5ed8;
+}
+
+.forgot {
+  font-size: 13px;
+  margin-top: 10px;
+  color: gray;
+}
+
+.signup {
+  margin-top: 15px;
+}
+
+.signup span {
+  color: #2c7be5;
+  cursor: pointer;
+}

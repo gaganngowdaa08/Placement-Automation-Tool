@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #0f172a; background: #f5f7fb; font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { min-width: 320px; scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; min-height: 100vh; font-size: 15px; line-height: 1.55; background: #f5f7fb; }
+button, input, select, textarea { font: inherit; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid rgba(59,130,246,.45); outline-offset: 2px; }
+.auth-brand-panel { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 15% 18%, rgba(96,165,250,.55), transparent 35%), radial-gradient(circle at 82% 78%, rgba(129,140,248,.28), transparent 32%), linear-gradient(135deg,#0b1f43 0%,#123a7a 52%,#1d4ed8 100%) !important; }
+.auth-brand-panel::before { content: "PAT"; position: absolute; z-index: 0; right: -2rem; top: 10%; color: rgba(255,255,255,.055); font-size: clamp(12rem,26vw,27rem); line-height: .9; font-weight: 950; letter-spacing: -.09em; pointer-events: none; }
+.auth-brand-panel > * { position: relative; z-index: 1; }
+.auth-brand-panel::after { content: "PLACEMENT AUTOMATION TOOL"; position: absolute; z-index: 0; right: 2rem; bottom: 23%; color: rgba(255,255,255,.14); font-size: clamp(.7rem,1.3vw,1rem); font-weight: 800; letter-spacing: .24em; transform: rotate(-90deg); transform-origin: right center; pointer-events: none; }
+.page-title { font-size: clamp(1.9rem,3.4vw,2.6rem); }
+.metric-card { min-height: 145px; }
+.dashboard-shell { background-image: radial-gradient(ellipse at top right, rgba(219,234,254,.42), transparent 42%); }
+.form-panel, .metric-card, .job-card { box-shadow: 0 10px 30px rgba(15,23,42,.045); }
+
+.page-heading { margin-bottom: 1.75rem; }
+.section-eyebrow { display: inline-block; color: #1d4ed8; font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+.page-title { margin-top: .4rem; color: #0f172a; font-size: clamp(1.75rem,3vw,2.25rem); font-weight: 850; letter-spacing: -.035em; line-height: 1.2; }
+.page-description { margin-top: .6rem; max-width: 54rem; color: #64748b; font-size: 1rem; line-height: 1.65; }
+.form-panel { border: 1px solid #e2e8f0; border-radius: 1.25rem; background: #fff; padding: clamp(1.15rem,2.5vw,2rem); box-shadow: 0 6px 22px rgba(15,23,42,.035); }
+.metric-card { border: 1px solid #e2e8f0; border-radius: 1.25rem; background: white; padding: 1.6rem; box-shadow: 0 6px 22px rgba(15,23,42,.035); }
+.field-label { display: flex; flex-direction: column; gap: .55rem; color: #334155; font-size: .9rem; font-weight: 650; }
+.field-hint { color: #64748b; font-size: .78rem; font-weight: 400; }
+.primary-button { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: .8rem; background: #1d4ed8; padding: .8rem 1.15rem; color: white; font-size: .92rem; font-weight: 750; box-shadow: 0 5px 12px rgba(29,78,216,.15); transition: background .15s ease, transform .15s ease; }
+.primary-button:hover { background: #1e40af; transform: translateY(-1px); }
+.primary-button:disabled { cursor: not-allowed; opacity: .55; transform: none; }
+.secondary-button { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #dbeafe; border-radius: .8rem; background: #fff; padding: .75rem 1rem; color: #1d4ed8; font-size: .9rem; font-weight: 700; }
+.secondary-button:hover { background: #eff6ff; }
+.status-success, .status-error { margin: 0 0 1rem; border-radius: .9rem; padding: .85rem 1rem; font-size: .92rem; line-height: 1.5; }
+.status-success { border: 1px solid #a7f3d0; background: #ecfdf5; color: #065f46; }
+.status-error { border: 1px solid #fecaca; background: #fef2f2; color: #991b1b; }
+.empty-state { border: 1px dashed #cbd5e1; border-radius: 1.1rem; background: #fff; padding: 3.5rem 1.5rem; text-align: center; }
+.job-card { border: 1px solid #e2e8f0; border-radius: 1.25rem; background: #fff; padding: 1.35rem; box-shadow: 0 4px 14px rgba(15,23,42,.03); transition: transform .18s ease, box-shadow .18s ease; }
+.job-card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(15,23,42,.08); }
+.upload-dropzone { display: flex; min-height: 11rem; flex-direction: column; align-items: center; justify-content: center; border: 2px dashed #bfdbfe; border-radius: 1rem; background: #f8fbff; padding: 1.5rem; text-align: center; }
+.data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: .92rem; }
+.data-table th { padding: .95rem 1rem; background: #f8fafc; color: #475569; font-size: .75rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.data-table td { padding: 1rem; border-top: 1px solid #f1f5f9; color: #475569; }
+@media (max-width: 640px) { .data-table th, .data-table td { padding: .75rem .6rem; } body { font-size: 14px; } }
+@media print { @page { size: auto; margin: 16mm; } body { background: white !important; font-size: 11pt; line-height: 1.45; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; } aside, nav, header button, .no-print, .primary-button, .secondary-button { display: none !important; } main, section, .form-panel, .metric-card { box-shadow: none !important; border-color: #ddd !important; background: white !important; padding: 0 !important; } .page-heading { margin-bottom: 14pt !important; } .page-title { font-size: 22pt !important; color: black !important; } .page-description { color: #333 !important; font-size: 10pt !important; } input, select, textarea { appearance: none; border: 0 !important; border-bottom: 1px solid #ddd !important; background: white !important; padding: 4pt 0 !important; color: black !important; } .field-label { break-inside: avoid; } .data-table tr { break-inside: avoid; } a { color: black !important; text-decoration: none !important; } }

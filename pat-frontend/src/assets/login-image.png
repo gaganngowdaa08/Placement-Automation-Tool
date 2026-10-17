@@ -1,0 +1,17 @@
+import shoppingImage from "../assets/shopping.svg";
+<img src={shoppingImage} alt="shopping illustration" />
+<div className="page">
+
+  <img src={shoppingImage} alt="shopping illustration"/>
+
+  <div className="login-box">
+    <h2>Welcome Back 👋</h2>
+
+    <InputField type="email" placeholder="Enter email"/>
+    <InputField type="password" placeholder="Enter password"/>
+
+    <Button text="Login"/>
+
+  </div>
+
+</div>

@@ -1,0 +1,8 @@
+const features = [
+  ["01", "Student profiles", "Save personal information, academics, eligibility details, and professional links to your account."],
+  ["02", "Live placement drives", "Companies can publish opportunities that appear as database-backed job cards."],
+  ["03", "Resume library", "Upload a PDF resume and keep its database record attached to your student account."],
+  ["04", "Application tracking", "Submit applications for live roles and check their saved status after signing back in."],
+];
+const Features = () => <section className="bg-white px-5 py-20 sm:px-10 lg:px-16"><div className="mx-auto max-w-7xl"><div className="max-w-2xl"><span className="text-xs font-extrabold uppercase tracking-[.18em] text-blue-700">One workflow, fewer loose ends</span><h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">Tools to make placement coordination clearer.</h2><p className="mt-4 text-base leading-7 text-slate-600">Keep each part of the placement process together with role-specific workspaces and persistent records.</p></div><div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">{features.map(([number,title,description])=><article key={number} className="rounded-2xl border border-slate-200 bg-slate-50/70 p-6 transition hover:-translate-y-1 hover:border-blue-200 hover:bg-white hover:shadow-lg"><span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-sm font-black text-blue-800">{number}</span><h3 className="mt-5 text-lg font-extrabold text-slate-900">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{description}</p></article>)}</div></div></section>;
+export default Features;

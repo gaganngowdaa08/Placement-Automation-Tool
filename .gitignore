@@ -1,0 +1,37 @@
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+!pat-frontend/.env.example
+
+# Node / frontend
+node_modules/
+**/node_modules/
+pat-frontend/dist/
+dist/
+dist-ssr/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.local
+
+# Java / Maven
+**/target/
+*.class
+
+# Local database, logs, and uploaded candidate documents
+uploads/
+**/uploads/
+*.log
+*.sql.backup
+*.dump
+mysql-data/
+
+# IDEs and operating systems
+.vscode/
+.idea/
+.settings/
+.project
+.DS_Store
+Thumbs.db
+*.iml

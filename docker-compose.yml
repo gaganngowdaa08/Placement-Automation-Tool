@@ -1,0 +1,81 @@
+name: placement-automation-tool-main
+
+services:
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-patroot-dev-only}
+      MYSQL_DATABASE: pat_system
+      MYSQL_USER: ${DB_USERNAME:-patuser}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-patpassword-dev-only}
+    ports:
+      - "3306:3306"
+    volumes:
+      - pat-mysql-data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  db-migrate:
+    image: mysql:8.4
+    restart: "no"
+    environment:
+      DB_USERNAME: ${DB_USERNAME:-patuser}
+      DB_PASSWORD: ${DB_PASSWORD:-patpassword-dev-only}
+    volumes:
+      - ./database/migrations/002_account_roles.sql:/migration-002.sql:ro
+      - ./database/migrations/003_placement_approval_and_interview_rounds.sql:/migration-003.sql:ro
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - |
+        export MYSQL_PWD="$$DB_PASSWORD"
+        until mysqladmin ping --protocol=TCP -h mysql -P 3306 --silent; do sleep 2; done
+        mysql --protocol=TCP -h mysql -P 3306 -u"$$DB_USERNAME" pat_system < /migration-002.sql
+        mysql --protocol=TCP -h mysql -P 3306 -u"$$DB_USERNAME" pat_system < /migration-003.sql
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  backend:
+    build:
+      context: ./backend_pat
+    restart: unless-stopped
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/pat_system?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      DB_USERNAME: ${DB_USERNAME:-patuser}
+      DB_PASSWORD: ${DB_PASSWORD:-patpassword-dev-only}
+      JWT_SECRET: ${JWT_SECRET:-pat-local-development-key-change-this-before-deploying-2026}
+      CORS_ALLOWED_ORIGINS: http://localhost:8081
+      DDL_AUTO: update
+      SHOW_SQL: "false"
+      PORT: 8080
+      UPLOAD_DIR: /app/uploads/resumes
+    volumes:
+      - pat-uploads:/app/uploads/resumes
+    depends_on:
+      mysql:
+        condition: service_healthy
+      db-migrate:
+        condition: service_completed_successfully
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: ./pat-frontend
+      args:
+        VITE_API_BASE_URL: /api
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+
+volumes:
+  pat-mysql-data:
+  pat-uploads:
